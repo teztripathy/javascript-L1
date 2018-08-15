@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CD Details</title>
+</head>
+<body>
+    <div>
+        <p>CD Name: <span id="name"></span></p>
+        <p>CD Publisher: <span id="publisher"></span></p>
+        <p>CD Price: &#x20b9; <span id="price"></span></p>
+    </div>
+    <script>
+        var CD = { //JavaScript Object
+            CDName:"Jannat",
+            CDPublisher:"T Series",
+            CDPrice: 199
+        };
+        function displayAllDetails() {
+            document.getElementById("name").innerHTML = CD.CDName;
+            document.getElementById("publisher").innerHTML = CD.CDPublisher;
+            document.getElementById("price").innerHTML = (CD.CDPrice - (CD.CDPrice * 0.03)) + (CD.CDPrice * 0.1);
+        }
+        displayAllDetails();
+    </script>
+</body>
+</html>

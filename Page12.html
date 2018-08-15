@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+		    
+		    /*eslint-disable no-unreachable */
+            
+		    function inlineAlert(id, note) {
+		        document.getElementById(id).innerHTML = note;
+		        
+		    }
+			function validateForm() 
+			{
+				var dep = document.forms["raiwayForm"]["from"].value;
+				var dest = document.forms["raiwayForm"]["to"].value;
+				var age = document.forms["raiwayForm"]["age"].value;
+				var Name = document.forms["raiwayForm"]["Name"].value;
+				var sdate = document.forms["raiwayForm"]["date"].value;
+				var dateArray = sdate.split('-');
+				var cdate = new Date();
+				if(parseInt(dateArray[2], 10) <= cdate.getDate() && parseInt(dateArray[1], 10) <= cdate.getMonth()+1 && parseInt(dateArray[0], 10) <= cdate.getFullYear()) {
+                	inlineAlert("date_alert","* ONLY FUTURE DATE IS ALLOWED.");
+            	}
+				else if(parseInt(dateArray[2], 10) >= cdate.getDate()+1 && parseInt(dateArray[1], 10) >= cdate.getMonth()+1 && parseInt(dateArray[0], 10) >= cdate.getFullYear()+1) {
+					inlineAlert("date_alert", "* BOOKING CANNOT BE DONE MORE THAN 12 MONTHS ADVANCE.");
+				}
+				if(!Name.match(/^[A-Za-z]+$/)) {
+					inlineAlert("name_alert", "* CHARACTERS ONLY");
+				}
+				if(Name.length > 14) {
+					inlineAlert("name_alert", "* MAXIMUM LENGTH IS 14 CHARACTERS");
+				}
+				if(Name.length < 3) {
+					inlineAlert("name_alert", "* MINIMUM LENGTH IS 3 CHARACTERS.");
+				}
+				if(age.length === 0) {
+					inlineAlert("age_alert", "* CANNOT BE BLANK.");
+				}
+				if(!age.match(/^\d+/))
+				{
+					inlineAlert("age_alert", "* INTEGER VALUE ONLY");
+				}
+				if(parseInt(age, 10) <= 0) {
+					inlineAlert("age_alert", "* CANNOT BE NEGATIVE OR ZERO.");
+				}
+				if(parseInt(age, 10) >= 151) {
+					inlineAlert("age_alert", "* INVALID AGE");
+				}
+				if (dep === "") 
+				{
+					inlineAlert("from_alert", "* CANNOT BE BLANK.");
+				}
+				if(dest === "") {
+				    inlineAlert("to_alert", "* CANNOT BE BLANK.");
+				}
+				if(dep.length<3)
+				{
+					inlineAlert("from_alert", "* MINIMUM LENGHTH IS 3 CHARACTERS.");
+				}
+				if(dest.length<3) {
+				    inlineAlert("to_alert", "* MINIMUM LENGHTH IS 3 CHARACTERS.");
+				}
+				if(!dep.match(/^[A-Za-z]+$/))
+				{
+					inlineAlert("from_alert", "* CHARACTERS ONLY.");
+				}
+				if(!dest.match(/^[A-Za-z]+$/))
+				{
+				    inlineAlert("to_alert", "* CHARACTERS ONLY.");
+				}
+			}
+		</script>
+		<style>
+			form {
+				background-color: lavenderblush;
+				margin: 1cm;
+				border: 2px solid blue;
+				padding: 1cm;
+				border-radius: 20px;
+			}
+			input {
+				text-align: left;
+				text-transform: uppercase;
+			}
+			h1 {
+				text-align: center;
+				font-family: Georgia, 'Times New Roman', Times, serif;
+				font-size: 40pt;
+				color: teal;
+				text-transform: uppercase;
+			}
+			td {
+			     height: 30px;
+			     width: 80px;
+			     font-weight: bold;
+			     font-family: arial;
+			}
+			table {
+			    padding-left: 3cm;
+			}
+			.alert {
+			    color: red;
+			    font-size: 8pt;
+			    padding-left: 1cm;
+			    width: 7cm;
+			}
+		</style>
+	</head>
+	<body>
+        <!--
+		<form name="raiwayForm" onsubmit="validateForm()" method="post">
+			<h1>railway reservation form</h1>
+		Name: <input type="text" name="Name" style="margin-left: 4pt;"> <br/>
+		Age:  <input type="text" name="age" style="margin-left: 16pt;"> <br/>
+		From: <input type="text" name="from" style="margin-left: 6pt;">
+		To:   <input type="text" name="to" style="margin-left: 3pt;"> <br/>
+		Date: <input type="date" name="date" style="margin-left: 10pt;"> <br/><br/>
+			  <input type="submit" value="Submit" style="margin-left: 46pt;">
+		</form>
+		-->
+		<form name="raiwayForm" onsubmit="return validateForm()">
+		      <h1>railway reservation form</h1>
+		      <table>
+		          <tr>
+		              <td>Name:</td>
+		              <td><input type="text" name="Name"></input></td>
+		              <td class="alert" id="name_alert"></td>
+		          </tr>
+		          <tr>
+		              <td>Age:</td>
+		              <td><input type="text" name="age"></input></td>
+		              <td class="alert" id="age_alert"></td>
+		          </tr>
+		          <tr>
+		              <td>From:</td>
+		              <td><input type="text" name="from"></input></td>
+		              <td class="alert" id="from_alert"></td>
+		          </tr>
+		          <tr>
+		              <td>To:</td>
+		              <td><input type="text" name="to"></input></td>
+		              <td class="alert" id="to_alert"></td>
+		          </tr>
+		          <tr>
+		              <td>Date:</td>
+		              <td><input type="date" name="date"></input></td>
+		              <td class="alert" id="date_alert"></td>
+		          </tr>
+		          <tr>
+		              <td></td>
+		              <td><button type="button" onclick="validateForm()">Submit</button></td>
+		          </tr>
+		      </table>
+		</form>
+	</body>
+</html>

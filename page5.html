@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script language="javascript" type="text/javascript">
+			function findSum(){
+				var sum=0;
+				var a = Number(document.getElementById('a').value);
+				var b = Number(document.getElementById('b').value);
+				sum=a+b;
+				document.getElementById('scenario').value = sum;
+			}
+		</script>
+	</head>
+	<body>
+		Value Of First Number  : <input id="a"/><br>
+		Value Of Second Number : <input id="b"/><br>
+		<button onClick = "findSum()"> Click Me</button> To Find Sum :<input type="text" id="scenario"/>
+	</body>
+</html>

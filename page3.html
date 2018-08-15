@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script language="javascript" type="text/javascript">
+			var a =80;
+			var b=20;
+			var sum=0;
+			function print()
+			{
+				if(typeof(a)== typeof(b))
+				{
+					sum=a+b;
+					document.getElementById("scenario").innerHTML = "The Sum of "+ a +" and " + b + " is : " + sum;
+				}
+				else
+				document.getElementById("scenario").innerHTML = "Sorry.... Only Nos will be added" ;
+			}
+		</script>
+	</head>
+	<body>
+		<p id="scenario">To Find Sum</p>
+		<button onClick = "print()"> Click Me</button>
+	</body>
+</html>

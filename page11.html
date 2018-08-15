@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <style>
+    @font-face {
+        font-family: "calc";
+        src:url('calcfont.ttf')
+    }
+    table, td, tr {
+        align-content: center;
+    }
+    table {
+        border-collapse: collapse;
+    }
+    .button {
+        border-radius: 12px;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .button1 {
+        background-color: #4CAF50;
+    }
+    .button2 {
+        background-color: cornflowerblue;
+    }
+    </style>
+    <script>
+            var temp;
+            var operation = "reset";
+            function insertText(parameter) {
+                var display = document.getElementById("display");
+                var text = document.createTextNode(parameter);
+                if(operation == "plus") {
+                    operation = "dplus";
+                    display.innerHTML = "";
+                    display.appendChild(text);
+                }
+                else if(operation == "minus") {
+                    operation = "dminus";
+                    display.innerHTML = "";
+                    display.appendChild(text);
+                }
+                else if(operation == "times") {
+                    operation = "dtimes";
+                    display.innerHTML = "";
+                    display.appendChild(text);
+                }
+                else if(operation == "divide") {
+                    operation = "ddivide";
+                    display.innerHTML = "";
+                    display.appendChild(text);
+                }
+                else if(operation == "reset") {
+                    operation = "ok";
+                    display.innerHTML = "";
+                    display.appendChild(text);
+                }
+                else {
+                    display.appendChild(text);
+                }
+            }
+            function fetch() {
+                temp = parseInt(document.getElementById("display").textContent);
+            }
+            function insertPlusOperator()
+            {
+                document.getElementById("display").innerHTML = document.getElementById("plus").textContent;
+                operation = "plus";
+            }
+            function plusOperation() {
+                temp1 = temp;
+                fetch();
+                temp += temp1;
+            }
+            function insertMinusOperator() {
+                document.getElementById("display").innerHTML = document.getElementById("minus").textContent;
+                operation = "minus";
+            }
+            function minusOperation() {
+                temp1 = temp;
+                fetch();
+                temp = temp1 - temp;
+            }
+            function insertTimesOperator() {
+                document.getElementById("display").innerHTML = document.getElementById("times").textContent;
+                operation = "times";
+            }
+            function timesOperation() {
+                temp1 = temp;
+                fetch();
+                temp *= temp1;
+            }
+            function insertDivideOperator() {
+                document.getElementById("display").innerHTML = document.getElementById("divide").textContent;
+                operation = "divide";
+            }
+            function divideOperation() {
+                temp1 = temp;
+                fetch();
+                temp = temp1 / temp;
+            }
+            function calc() {
+                if(operation == "dplus") {
+                    plusOperation();
+                }
+                else if(operation == "dminus") {
+                    minusOperation();
+                }
+                else if(operation == "dtimes") {
+                    timesOperation();
+                }
+                else if(operation == "ddivide") {
+                    divideOperation();
+                }
+            }
+            function result() {
+                document.getElementById('display').innerHTML = temp;
+                temp = 0;
+                operation = "reset";
+            }
+            function allClear() {
+                document.getElementById('display').innerHTML = "0";
+                temp = 0;
+                operation = "reset";
+            }
+        </script>
+    <div>
+        <h1 align="center">Simple Calculator</h1>
+        <table align="center">
+            <tr>
+                <td id="display" colspan="3" style="height: 50px; width: 200px;font-size: 40px; border: 3px solid cornflowerblue; font-family: calc;">0</td>
+            </tr>
+        </table>
+        <table align="center">
+            <tr>
+                <td align="center"><button class="button button1" onclick="insertText(1)">1</button></td>
+                <td align="center"><button class="button button1" onclick="insertText(2)">2</button></td>
+                <td align="center"><button class="button button1" onclick="insertText(3)">3</button></td>
+            </tr>
+            <tr>
+                <td align="center"><button class="button button1" onclick="insertText(4)">4</button></td>
+                <td align="center"><button class="button button1" onclick="insertText(5)">5</button></td>
+                <td align="center"><button class="button button1" onclick="insertText(6)">6</button></td>
+            </tr>
+            <tr>
+                <td align="center"><button class="button button1" onclick="insertText(7)">7</button></td>
+                <td align="center"><button class="button button1" onclick="insertText(8)">8</button></td>
+                <td align="center"><button class="button button1" onclick="insertText(9)">9</button></td>
+            </tr>
+            <tr>
+                <td align="center"><button class="button button1" onclick="insertText(0)">0</button></td>
+                <td align="center"><button id="plus" class="button button2" onclick="fetch(); insertPlusOperator()">&plus;</button></td>
+                <td align="center"><button id="minus" class="button button2" onclick="fetch(); insertMinusOperator()">&minus;</button></td>
+            </tr>
+            <tr>
+                <td align="center"><button id="times" class="button button2" onclick="fetch(); insertTimesOperator()">&times;</button></td>
+                <td align="center"><button id="divide" class="button button2" onclick="fetch(); insertDivideOperator()">&divide;</button></td>
+                <td align="center"><button class="button button2" onclick="calc(); result();">&equals;</button></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="3"><button class="button button2" onclick="allClear()">AC</button> </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

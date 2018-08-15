@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script language="javascript" type="text/javascript">
+			var names =['Abhishek','Priya','Sindhura','Ranbir','Alok','Ujjwal','Aashana','Tejeswar','Malik','Apoorva'];
+
+			function print()
+			{
+				document.getElementById("scenario").innerHTML += "The Alternative names in array are mentioned below : <br>" ;
+				for(var i=0;i<names.length;i+=2)
+				{	
+					document.getElementById("scenario").innerHTML += names[i] + "<br>";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<p id="scenario"></p>
+		<button onClick = "print()"> Click Me</button>
+	</body>
+</html>

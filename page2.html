@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script language="javascript" type="text/javascript">
+			var marks =[100,95,85,67,75,92,86,84,59,66];
+			var sum=0;
+			var avg;
+			function print()
+			{
+				for(var i=0;i<marks.length;i++)
+				{	
+					sum += parseInt( marks[i], 10 )
+				}
+				avg=sum/marks.length;
+				document.getElementById("scenario").innerHTML = "The Average of given array is: "+avg;
+			}
+		</script>
+	</head>
+	<body>
+		<p id="scenario">To Find Average</p>
+		<button onClick = "print()"> Click Me</button>
+	</body>
+</html>

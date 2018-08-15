@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script language="javascript" type="text/javascript">
+			function changeColor()
+			{
+				let a = prompt("Input backgroud color.", "red");
+				if (a !== 'no') {
+					document.body.style.backgroundColor = a;
+					let b = prompt("Input foreground color.", "green");
+					document.body.style.color = b;
+					window.setTimeout(changeColor, 0);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<p id="foreground">To Check Foreground Color</p>
+		<button onclick="changeColor()">Input Color</button>
+	</body>
+</html>

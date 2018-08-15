@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Favourite Color</title>
+    </head>
+    <body>
+        <div id="change">
+            <h1>Change The Background Color</h1>
+            <form>
+                Enter your favourite color: <br/>
+                <input id="color" type="text" value="lavender">
+                <br/><br/>
+                <button type="button" value="Submit" onclick="changeBackground()" value="Submit">Submit</button>
+            </form>
+        </div>
+        <script>
+            function changeBackground() {
+                var color = document.getElementById("color").value.toString();
+                var attr = "background-color:"+color+";";
+                document.getElementById("change").setAttribute("style",attr);
+            }
+            changeBackground();
+        </script>
+    </body>
+</html>
